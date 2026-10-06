@@ -1,0 +1,6 @@
+{
+  "name": "منصة المواقع الجاهزة للبيع والتخصيص | Turnkey Business Site Builder",
+  "description": "موقع إلكتروني احترافي قابل للتخصيص الكامل والبيع المباشر للشركات والعملاء مع محرر فوري وتصدير كود متكامل.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
