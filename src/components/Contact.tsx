@@ -38,9 +38,49 @@ export const Contact: React.FC<ContactProps> = ({
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
+
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '1b8e9ed1-349d-470c-ba11-c59191b8d1ae',
+          subject: `رسالة جديدة من: ${formState.name} (${formState.phone})`,
+          from_name: 'Pro Web Design',
+          name: formState.name,
+          phone: formState.phone,
+          service: formState.service,
+          message: formState.message,
+        }),
+      });
+    } catch (err) {
+      console.warn('Web3Forms error', err);
+    }
+
+    const formattedText = `مرحباً ${businessName}،
+أود الاستفسار عن خدمة من خلال الموقع:
+- الاسم: ${formState.name}
+- الجوال: ${formState.phone}
+- الخدمة: ${formState.service}
+- التفاصيل: ${formState.message}`;
+
+    const whatsappUrl = `https://wa.me/${whatsappClean}?text=${encodeURIComponent(formattedText)}`;
+    window.open(whatsappUrl, '_blank');
+
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 4000);
+  };
+    });
+  } catch (err) {
+    console.warn('Web3Forms error', err);
+  }
 
     // Format WhatsApp message
     const formattedText = `مرحباً ${businessName}،

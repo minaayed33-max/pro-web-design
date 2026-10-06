@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2, Phone, Mail, Sparkles, Loader2 } from 'lucide-react';
+import { X, Send, CheckCircle2, Sparkles, Loader2 } from 'lucide-react';
 
 interface NeonOrderModalProps {
   isOpen: boolean;
@@ -25,27 +25,26 @@ export const NeonOrderModal: React.FC<NeonOrderModalProps> = ({ isOpen, onClose,
     setIsSubmitting(true);
 
     try {
-      // Send form data to minaayed33@gmail.com via FormSubmit endpoint
-      await fetch('https://formsubmit.co/ajax/minaayed33@gmail.com', {
+      await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          _subject: `طلب تصميم موقع جديد من: ${form.name} (${form.phone})`,
-          الاسم: form.name,
-          الهاتف_الواتساب: form.phone,
-          نوع_النشاط: form.businessType,
-          التفاصيل: form.details,
-          _captcha: 'false',
+          access_key: '1b8e9ed1-349d-470c-ba11-c59191b8d1ae',
+          subject: `طلب تصميم موقع جديد من: ${form.name} (${form.phone})`,
+          from_name: 'Pro Web Design',
+          name: form.name,
+          phone: form.phone,
+          business_type: form.businessType,
+          details: form.details,
         }),
       });
     } catch (err) {
-      console.warn('FormSubmit background notification error', err);
+      console.warn('Web3Forms error', err);
     }
 
-    // Prepare WhatsApp direct link as well for instant notification
     const whatsappMsg = `مرحباً مهندس مينا عايد (المحترف لتصميم المواقع - Pro Web Design)،
 أود طلب تصميم موقع احترافي:
 - الاسم: ${form.name}
@@ -69,7 +68,7 @@ export const NeonOrderModal: React.FC<NeonOrderModalProps> = ({ isOpen, onClose,
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-      <div 
+      <div
         className="relative w-full max-w-lg p-6 sm:p-8 rounded-3xl bg-[#0c121e] border border-cyan-500/30 shadow-[0_0_50px_rgba(6,182,212,0.15)] text-slate-100"
         dir={isAr ? 'rtl' : 'ltr'}
       >
@@ -103,8 +102,8 @@ export const NeonOrderModal: React.FC<NeonOrderModalProps> = ({ isOpen, onClose,
             </h4>
             <p className="text-xs text-slate-300">
               {isAr
-                ? 'تم إرسال نسخة إلى البريد minaayed33@gmail.com وجاري تحويلك للمحادثة المباشرة على الواتساب.'
-                : 'A copy was dispatched to minaayed33@gmail.com and WhatsApp was opened for instant reply.'}
+                ? 'تم إرسال بياناتك وجاري تحويلك للمحادثة المباشرة على الواتساب.'
+                : 'Your details were sent and WhatsApp was opened for instant reply.'}
             </p>
           </div>
         ) : (
