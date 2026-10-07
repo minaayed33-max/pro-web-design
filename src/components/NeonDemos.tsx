@@ -39,7 +39,7 @@ const DEMOS_LIST: DemoItem[] = [
     categoryEn: 'Construction & Architecture',
     descAr: 'عرض المشاريع السابقة، شهادات الجودة، وباقات تسليم مفتاح مع مقايسة سريعة.',
     descEn: 'Showcase projects portfolio, ISO certificates, and instant quotation request.',
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=800&q=80',
+    image: '/contracting.jpg',
     badgeAr: 'معاينة حية جاهزة',
     badgeEn: 'Live Demo Available',
   },

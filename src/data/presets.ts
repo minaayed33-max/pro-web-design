@@ -277,7 +277,7 @@ export const PRESETS_DATA: Record<PresetKey, ClientWebsiteData> = {
     tagline: 'نبني مستقبلك بأعلى معايير الجودة والصلابة الهندسية',
     subTagline: 'خبرة عريقة في تنفيذ الفلل السكنية، المجمعات التجارية، وأعمال التشطيبات الفاخرة بأدق تفاصيل السلامة والكود الهندسي.',
     heroBadge: 'مصنفون درجة أولى في المقاولات العامة والإنشاءات',
-    heroImage: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156a?auto=format&fit=crop&w=1200&q=80',
+    heroImage: '/contracting.jpg',
     currency: 'ج.م',
     themeId: 'amber',
 
